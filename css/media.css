@@ -1,0 +1,132 @@
+@media screen and (max-width: 85em) {
+  #main-list {
+    padding-right: 9rem;
+  }
+  #product-list {
+    gap: 1rem;
+  }
+  #side-filter {
+    margin-right: 2rem;
+  }
+  .slide-heading-text {
+    left: 5%;
+  }
+}
+@media screen and (max-width: 76em) {
+  #main-list {
+    padding-right: 17rem;
+  }
+  #product-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #side-filter {
+    margin-right: 8rem;
+  }
+  .slide-heading-text {
+    top: 5%;
+    left: 5%;
+  }
+}
+@media screen and (max-width: 75em) {
+  .slide-heading {
+    left: 10%;
+  }
+  .slide-text {
+    left: 10%;
+    top: 27%;
+  }
+  .slide-button {
+    left: 77%;
+    top: 26%;
+  }
+}
+@media screen and (max-width: 64em) {
+  .slide-height {
+    height: 30rem;
+  }
+  .slide-heading {
+    font-size: 2.5rem;
+  }
+  #side-filter {
+    margin-right: 1rem;
+  }
+
+  @media screen and (max-width: 53em) {
+    .slide-heading,
+    .slide-heading-text {
+      font-size: 2rem;
+    }
+    .p-slide {
+      height: 20rem;
+    }
+    .q-menu-items {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1rem;
+    }
+    .q-menu-box:nth-child(odd),
+    .q-menu-box:nth-child(even) {
+      justify-self: center;
+    }
+    #main-list {
+      grid-template-areas: 'side' 'header' 'list';
+      padding-right: 5rem;
+    }
+    #list-header {
+      width: 22rem;
+      position: static;
+      justify-self: center;
+    }
+    #side-filter {
+      position: static;
+      width: 22rem;
+      margin: 0;
+      margin-bottom: 1rem;
+      justify-self: center;
+    }
+    #product-list {
+      justify-self: center;
+    }
+  }
+}
+@media screen and (max-width: 48em) {
+  .img-all {
+    display: none;
+  }
+  .slide-button {
+    top: 21%;
+    left: 64%;
+  }
+  .slide-text {
+    top: 21%;
+    width: 40%;
+  }
+  .slide-heading {
+    font-size: 1.5rem;
+  }
+  .p-slide {
+    height: 14rem;
+  }
+  #main-list {
+    padding: 1rem 1rem 15rem 1rem;
+  }
+  @media screen and (max-width: 32em) {
+    .slide-text {
+      width: 45%;
+      font-size: 0.9rem;
+    }
+    .main-nav {
+      display: none;
+    }
+    #nav-burger {
+      display: block;
+    }
+
+    .p-ul li {
+      font-size: 1rem;
+    }
+    .c-show {
+      width: 100vw;
+    }
+  }
+}

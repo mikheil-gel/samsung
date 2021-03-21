@@ -1,0 +1,270 @@
+{
+  "headerData": [
+    { "name": "mobile", "series": ["s", "note", "a"], "seriesName": "galaxy", "img": "img/mob.webp" },
+    { "name": "tablet", "series": ["s", "a"], "seriesName": "galaxy tab", "img": "img/tab.jpg" },
+    { "name": "laptop", "series": ["chromebook", "book"], "seriesName": "", "img": "img/laptop.webp" }
+  ],
+  "slides": {
+    "mobile": {
+      "type": "mobile",
+      "url": "img/showcase/mob.jpg",
+      "headingText": "Galaxy Smartphones for everyone"
+    },
+    "tablet": {
+      "type": "tablet",
+      "url": "img/showcase/tab-s7.webp",
+      "headingText": "PC performance meets tablet portability"
+    },
+    "laptop": {
+      "type": "laptop",
+      "url": "./img/showcase/laptop.webp",
+      "headingText": "PCs will never be the same"
+    }
+  },
+  "slider": [
+    {
+      "type": "mobile",
+      "series": "note",
+      "url": "img/showcase/s_mobile.jpg",
+      "headingText": "This is Galaxy Note20 | Note20 Ultra",
+      "mainText": "It's a director-grade 8K video camera. It's a multitasking computer suite. It's anything but your average smartphone.",
+      "buttonText": "buy galaxy note",
+      "textColor": "black"
+    },
+    {
+      "type": "tablet",
+      "series": "s",
+      "url": "img/showcase/s_tablet.jpg",
+      "headingText": "Galaxy Tab S7 / S7+",
+      "mainText": " The razor-sharp display, long-lasting battery and expandable memory. A tablet that lets you play harder and work smarter. ",
+      "buttonText": "buy galaxy tab s",
+      "textColor": "white"
+    },
+    {
+      "type": "laptop",
+      "series": "chromebook",
+      "url": "./img/showcase/s_laptop.webp",
+      "headingText": "Chromebook Simplicity. Galaxy Style.",
+      "mainText": "Beautiful performance, even better looks. The new Chromebook's ready to knock any project out of the park.",
+      "buttonText": "buy galaxy chromebook",
+      "textColor": "black"
+    }
+  ],
+  "menu": [
+    {
+      "type": "mobile",
+      "series": "note",
+      "text": "Samsung Galaxy Note",
+      "img": "img/products/note20ultra.webp"
+    },
+    {
+      "type": "laptop",
+      "series": "book",
+      "text": "Samsung Galaxy Book",
+      "img": "img/products/book_s.webp"
+    },
+    {
+      "type": "tablet",
+      "series": "s",
+      "text": "Samsung Galaxy Tab S",
+      "img": "img/products/tabs7p.webp"
+    },
+    {
+      "type": "mobile",
+      "series": "s",
+      "text": "Samsung Galaxy S",
+      "img": "img/products/s20ultra.webp"
+    }
+  ],
+  "section": [
+    {
+      "secText": "mobile",
+      "product": [
+        {
+          "type": "mobile",
+          "series": "s",
+          "name": "galaxy s",
+          "img": "img/products/s20.webp",
+          "headText": "Epic in every way"
+        },
+        {
+          "type": "mobile",
+          "series": "note",
+          "name": "galaxy note",
+          "img": "img/products/note20.webp",
+          "headText": "Powerphone that forever changes how you work and play"
+        },
+        {
+          "type": "mobile",
+          "series": "a",
+          "name": "galaxy a",
+          "img": "img/products/a71.webp",
+          "headText": "The features and essentials you care about most"
+        }
+      ]
+    },
+    {
+      "secText": "tablet",
+      "product": [
+        {
+          "type": "tablet",
+          "series": "s",
+          "name": "galaxy tab s",
+          "img": "img/products/tabs7.webp",
+          "headText": "Designed for work. Perfect for Play."
+        },
+        {
+          "type": "tablet",
+          "series": "a",
+          "name": "galaxy tab a",
+          "img": "img/products/taba7.webp",
+          "headText": "Galaxy Tab A is here"
+        }
+      ]
+    },
+    {
+      "secText": "laptop",
+      "product": [
+        {
+          "type": "laptop",
+          "series": "chromebook",
+          "name": "chromebook",
+          "img": "img/products/chromebook.webp",
+          "headText": "Introducing Galaxy Chromebook"
+        },
+        {
+          "type": "laptop",
+          "series": "book",
+          "name": "galaxy book",
+          "img": "img/products/book_ion.webp",
+          "headText": "QLED brilliance in a PC"
+        }
+      ]
+    }
+  ],
+
+  "productFilterData": {
+    "mobile": [
+      {
+        "type": "mobile",
+        "groupName": "range",
+        "typeList": [
+          [350, 500],
+          [500, 900]
+        ],
+        "textHeading": "price",
+        "preText": "",
+        "afText": ""
+      },
+      {
+        "type": "mobile",
+        "groupName": "series",
+        "typeList": ["note", "s", "a"],
+        "textHeading": "mobile series name",
+        "preText": "galaxy",
+        "afText": ""
+      },
+      {
+        "type": "mobile",
+        "groupName": "storage",
+        "typeList": [128, 256],
+        "textHeading": "storage size",
+        "preText": "",
+        "afText": "GB"
+      }
+    ],
+    "tablet": [
+      {
+        "type": "tablet",
+        "groupName": "range",
+        "typeList": [
+          [200, 600],
+          [600, 800]
+        ],
+        "textHeading": "price",
+        "preText": "",
+        "afText": ""
+      },
+      {
+        "type": "tablet",
+        "groupName": "series",
+        "typeList": ["s", "a"],
+        "textHeading": "flagship series",
+        "preText": "galaxy tab",
+        "afText": ""
+      },
+      {
+        "type": "tablet",
+        "groupName": "screen",
+        "typeList": [8.4, 10.4, 11, 12.4],
+        "textHeading": "screen size",
+        "preText": "",
+        "afText": ""
+      },
+      {
+        "type": "tablet",
+        "groupName": "storage",
+        "typeList": [32, 64, 128],
+        "textHeading": "storage size",
+        "preText": "",
+        "afText": "GB"
+      }
+    ],
+    "laptop": [
+      {
+        "type": "laptop",
+        "groupName": "range",
+        "typeList": [
+          [300, 500],
+          [500, 1000],
+          [1000, 1300]
+        ],
+        "textHeading": "price",
+        "preText": "",
+        "afText": ""
+      },
+      {
+        "type": "laptop",
+        "groupName": "series",
+        "typeList": ["chromebook", "book"],
+        "textHeading": "flagship series name",
+        "preText": "",
+        "afText": ""
+      },
+      {
+        "type": "laptop",
+        "groupName": "screen",
+        "typeList": [11.6, 12.2, 13.3, 15.6],
+        "textHeading": "screen size",
+        "preText": "",
+        "afText": ""
+      },
+      {
+        "type": "laptop",
+        "groupName": "storage",
+        "typeList": [32, 256, 512],
+        "textHeading": "storage size",
+        "preText": "",
+        "afText": "GB SSD"
+      },
+      {
+        "type": "laptop",
+        "groupName": "memory",
+        "typeList": [4, 8, 12],
+        "textHeading": "memory",
+        "preText": "",
+        "afText": "GB"
+      }
+    ],
+    "search": [
+      {
+        "type": "search",
+        "groupName": "type",
+        "typeList": ["mobile", "tablet", "laptop"],
+        "textHeading": "product type",
+        "preText": "",
+        "afText": ""
+      }
+    ]
+  }
+}
