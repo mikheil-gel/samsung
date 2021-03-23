@@ -14,13 +14,11 @@
 }
 @media screen and (max-width: 76em) {
   #main-list {
-    padding-right: 17rem;
+    padding: 1rem 1rem 23.5rem 1rem;
   }
-  #product-list {
-    grid-template-columns: repeat(1, 1fr);
-  }
+
   #side-filter {
-    margin-right: 8rem;
+    margin-right: 1rem;
   }
   .slide-heading-text {
     top: 5%;
@@ -40,15 +38,33 @@
     top: 26%;
   }
 }
+@media screen and (max-width: 71em) {
+  #main-list {
+    grid-template-areas: 'side side' 'header header' 'list list';
+  }
+  #list-header {
+    width: 100%;
+    position: static;
+    justify-self: center;
+  }
+  #side-filter {
+    position: static;
+    width: 70%;
+    margin-right: 0;
+    margin-bottom: 1rem;
+    justify-self: left;
+  }
+  #product-list {
+    justify-self: center;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media screen and (max-width: 64em) {
   .slide-height {
     height: 30rem;
   }
   .slide-heading {
     font-size: 2.5rem;
-  }
-  #side-filter {
-    margin-right: 1rem;
   }
 
   @media screen and (max-width: 53em) {
@@ -70,21 +86,10 @@
     }
     #main-list {
       grid-template-areas: 'side' 'header' 'list';
-      padding-right: 5rem;
     }
-    #list-header {
-      width: 22rem;
-      position: static;
-      justify-self: center;
-    }
+
     #side-filter {
-      position: static;
-      width: 22rem;
-      margin: 0;
-      margin-bottom: 1rem;
-      justify-self: center;
-    }
-    #product-list {
+      width: 100%;
       justify-self: center;
     }
   }
@@ -95,7 +100,7 @@
   }
   .slide-button {
     top: 21%;
-    left: 64%;
+    left: 57%;
   }
   .slide-text {
     top: 21%;
@@ -107,8 +112,17 @@
   .p-slide {
     height: 14rem;
   }
-  #main-list {
-    padding: 1rem 1rem 15rem 1rem;
+
+  @media screen and (max-width: 47em) {
+    #list-header,
+    #side-filter {
+      width: 100%;
+      min-width: 22rem;
+    }
+
+    #product-list {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
   @media screen and (max-width: 32em) {
     .slide-text {
@@ -127,6 +141,13 @@
     }
     .c-show {
       width: 100vw;
+    }
+    .slide-heading-text {
+      width: 70%;
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+    #main-list {
+      padding: 0.5rem 0.5rem 23.11rem 0.5rem;
     }
   }
 }

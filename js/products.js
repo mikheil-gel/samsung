@@ -240,7 +240,7 @@ function loadingDataGif(data, type) {
   let timeout;
   clearTimeout(timeout);
 
-  productList.classList.add('list-opacity');
+  productList.classList.add('list-loading');
   gif.setAttribute('src', './img/giphy.webp');
   gif.setAttribute('alt', 'loading gif');
   gif.className = 'gif';
@@ -248,7 +248,7 @@ function loadingDataGif(data, type) {
   productList.append(gif);
 
   timeout = setTimeout(() => {
-    productList.classList.remove('list-opacity');
+    productList.classList.remove('list-loading');
 
     gif.remove();
 
@@ -337,6 +337,8 @@ function addFilterGroup(type, groupName, typeList, textHeading, preText = '', af
 
   sideFilter.innerHTML += temp;
 }
+
+// Create product list
 
 function addItem(
   type,
@@ -444,6 +446,25 @@ function productSort(data, series) {
   productList.addEventListener('click', createItems);
 }
 
+function createProductPage(type, series) {
+  let title = type[0].toUpperCase() + type.slice(1, type.length) + 's';
+  document.title = 'Samsung | ' + title;
+  homeSection.remove();
+
+  if (slide.dataset.type !== type) {
+    addSlide(type);
+  }
+  if (!app.querySelector('#list-header')) {
+    addHeaderFilter(type, undefined);
+  } else {
+    val = listHeader.querySelector('.header-filter-text').dataset.value;
+    txt = listHeader.querySelector('.header-filter-text').textContent;
+    addHeaderFilter(type, undefined, val, txt);
+  }
+  addSideFilter(type, series);
+  productSort(productData[type], series);
+}
+
 function createItems(e) {
   let btn = e.target;
   if (btn.classList.contains('btn-more')) {
@@ -461,9 +482,11 @@ function createItems(e) {
     btn.parentElement.parentElement.classList.remove('box-height-min');
     btn.parentElement.parentElement.classList.add('box-height-max');
   } else if (btn.dataset.model && btn.classList.contains('btn-buy')) {
-    createCartPage(e);
+    openCartPage(e);
   }
 }
+
+// Create product slide
 
 function addSlide(type) {
   if (!document.getElementById('slide')) {

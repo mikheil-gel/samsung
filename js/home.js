@@ -1,3 +1,18 @@
+// Function creating app element's home page content
+
+function createHomePage() {
+  while (app.firstChild) {
+    app.removeChild(app.firstChild);
+  }
+
+  document.title = 'Samsung';
+  createSlider();
+  createQuickMenu();
+  createSections();
+  createCartPage();
+  createSearch();
+}
+
 // Create header
 
 function createHeader() {
@@ -62,7 +77,7 @@ function createHeader() {
   header.innerHTML = `
          <nav class="nav-bar flex just-bet">
         <div class="logo">
-          <a href=""><img src="./img/global-samsung-logo.svg" alt="logo" /></a>
+          <a href="/"><img src="./img/global-samsung-logo.svg" alt="logo" /></a>
         </div>
         <div class="main-nav flex">
             <ul class="flex main-ul">
@@ -101,6 +116,7 @@ function createHeader() {
   header.append(burgerMenu);
 
   let mainLinks = document.querySelectorAll('.main-link'),
+    logoLink = document.querySelector('.logo'),
     searchLink = document.getElementById('nav-search'),
     cartLink = document.getElementById('nav-cart'),
     burgerLink = document.getElementById('nav-burger'),
@@ -108,6 +124,16 @@ function createHeader() {
     burgerMenuLinks = burgerMenu.querySelectorAll('.burger-menu-list ul li a'),
     burgerClose = burgerMenu.querySelector('.burger-close'),
     burgerChecks = burgerMenu.querySelectorAll('.burger-checkbox');
+
+  logoLink.addEventListener('click', (e) => {
+    let pageData = {
+      type: 'home',
+      series: 'home',
+    };
+    history.pushState(pageData, '', '/');
+    createHomePage();
+    e.preventDefault();
+  });
 
   mainLinks.forEach((el) => {
     el.addEventListener('click', (e) => {
@@ -137,7 +163,8 @@ function createHeader() {
 
   burgerLink.addEventListener('click', (e) => {
     burgerClose.removeAttribute('style');
-    document.querySelector('html').classList.add('overflow');
+
+    document.body.classList.add('overflow-h');
     burgerMenu.classList.remove('c-hide');
 
     burgerMenu.classList.add('c-show');
@@ -146,7 +173,7 @@ function createHeader() {
 
   burgerClose.addEventListener('click', (e) => {
     burgerClose.style.opacity = '0';
-    document.querySelector('html').classList.remove('overflow');
+    document.body.classList.remove('overflow-h');
 
     burgerMenu.classList.remove('c-show');
     burgerMenu.classList.add('c-hide');
@@ -167,12 +194,17 @@ function createHeader() {
     if (value) {
       let newValue = value.toLowerCase().trim();
       if (newValue.length > 2) {
+        let pageData = {
+          type: 'search',
+          series: newValue,
+        };
+        history.pushState(pageData, '', '/');
         if (app.querySelector('#product-list')) {
           let gif = document.createElement('img');
           let timeout;
           clearTimeout(timeout);
 
-          productList.classList.add('list-opacity');
+          productList.classList.add('list-loading');
           gif.setAttribute('src', './img/giphy.webp');
           gif.setAttribute('alt', 'loading gif');
           gif.className = 'gif';
@@ -182,7 +214,7 @@ function createHeader() {
           productList.append(gif);
 
           timeout = setTimeout(() => {
-            productList.classList.remove('list-opacity');
+            productList.classList.remove('list-loading');
 
             gif.remove();
             search(newValue);
@@ -209,7 +241,8 @@ function createHeader() {
 
       burgerMenu.classList.remove('c-show');
       burgerMenu.classList.add('c-hide');
-      document.querySelector('html').classList.remove('overflow');
+      console.log('burger do');
+      document.body.classList.remove('overflow-h');
     });
   });
 }
@@ -236,7 +269,9 @@ function createFooter() {
   footerLinks.forEach((fLink) => {
     fLink.addEventListener('click', (e) => {
       openLinks(e);
+      document.body.classList.add('height-a');
       scroll(0, productList.offsetTop);
+      document.body.classList.remove('height-a');
     });
   });
 
@@ -244,7 +279,9 @@ function createFooter() {
   footerCart.addEventListener('click', (e) => {
     if (cartPage.classList.contains('c-hide')) {
       cartPageToggle();
+      document.body.classList.add('height-a');
       scroll(0, header.offsetTop);
+      document.body.classList.remove('height-a');
     }
     e.preventDefault();
   });
@@ -283,7 +320,9 @@ function createQuickMenu() {
   menuBoxes.forEach((menuB) => {
     menuB.addEventListener('click', (e) => {
       openLinks(e);
+      document.body.classList.add('height-a');
       scroll(0, productList.offsetTop);
+      document.body.classList.remove('height-a');
     });
   });
 }
@@ -354,14 +393,16 @@ function createSections() {
   `;
   });
 
-  sectionBox.innerHTML += temp;
+  sectionBox.innerHTML = temp;
   homeSection.append(sectionBox);
 
   let pBox = sectionBox.querySelectorAll('.p-text-box button');
   pBox.forEach((box) => {
     box.addEventListener('click', (e) => {
       openLinks(e);
+      document.body.classList.add('height-a');
       scroll(0, productList.offsetTop);
+      document.body.classList.remove('height-a');
     });
   });
 
@@ -412,19 +453,17 @@ function openLinks(e) {
   let type = e.target.dataset.type || e.target.parentElement.dataset.type;
   let series = e.target.dataset.series || e.target.parentElement.dataset.series;
   if (type && series) {
+    let pageData = {
+      type,
+      series,
+    };
+    history.pushState(pageData, '', '/');
+
     createProductPage(type, series);
     if (cartPage.classList.contains('c-show')) {
       cartPageToggle();
     }
-    if (form.classList.contains('form-on')) {
-      form.classList.remove('form-on');
-      form.classList.add('form-off');
-      form.classList.remove('flex');
-      form.classList.add('display-none');
-    } else if (form.classList.contains('flex')) {
-      form.classList.remove('flex');
-      form.classList.add('display-none');
-    }
+    searchHide();
     let mainUl = document.querySelector('.main-nav > ul');
 
     mainUl.classList.add('display-none');
@@ -434,23 +473,6 @@ function openLinks(e) {
     }, 140);
   }
   e.preventDefault();
-}
-
-function createProductPage(type, series) {
-  homeSection.remove();
-
-  if (slide.dataset.type !== type) {
-    addSlide(type);
-  }
-  if (!app.querySelector('#list-header')) {
-    addHeaderFilter(type, undefined);
-  } else {
-    val = listHeader.querySelector('.header-filter-text').dataset.value;
-    txt = listHeader.querySelector('.header-filter-text').textContent;
-    addHeaderFilter(type, undefined, val, txt);
-  }
-  addSideFilter(type, series);
-  productSort(productData[type], series);
 }
 
 // Create search form
@@ -471,6 +493,11 @@ function createSearch() {
 }
 
 function search(value) {
+  document.title = 'Samsung | Search';
+  if (form.classList.contains('display-none')) {
+    form.classList.remove('display-none');
+    form.classList.add('flex');
+  }
   form.classList.remove('form-off');
   form.classList.add('form-on');
   let data = [];
@@ -500,6 +527,18 @@ function search(value) {
     productList.innerHTML = `
       <h1 data-value="no-data" class="no-data">No products found with key word(s): <span class="no-search-data">"${value}"</span></h1>
      `;
+  }
+}
+
+function searchHide() {
+  if (form.classList.contains('form-on')) {
+    form.classList.remove('form-on');
+    form.classList.add('form-off');
+    form.classList.remove('flex');
+    form.classList.add('display-none');
+  } else if (form.classList.contains('flex')) {
+    form.classList.remove('flex');
+    form.classList.add('display-none');
   }
 }
 
@@ -543,13 +582,12 @@ function createSlides(data, slideGroup, tiles) {
   });
 }
 
-//create slider
+//Create slider
 
 function createSlider() {
+  slide.className = 'slide-height';
   app.append(slide);
   let time = 5000;
-
-  let fTimer;
 
   let data = domData.slider;
 
@@ -570,12 +608,12 @@ function createSlider() {
   rightBtn.innerHTML = '&#10095;';
   slide.append(leftBtn, rightBtn);
 
+  let allSlides = document.querySelectorAll('.slide-content');
+  clearTimeout(fTimer);
   nextSlide();
 
-  let allSlides = document.querySelectorAll('.slide-content');
-
   leftBtn.addEventListener('click', () => {
-    clearInterval(fTimer);
+    clearTimeout(fTimer);
     allSlides.forEach((el) => {
       if (el.classList.contains('slide-active')) {
         el.classList.remove('slide-active');
@@ -592,8 +630,7 @@ function createSlider() {
     nextSlide();
   });
   function forward() {
-    allSlides = document.querySelectorAll('.slide-content');
-    clearInterval(fTimer);
+    clearTimeout(fTimer);
     allSlides.forEach((el) => {
       if (el.classList.contains('slide-active')) {
         el.classList.remove('slide-active');
@@ -606,22 +643,24 @@ function createSlider() {
         el.classList.add('slide-next');
       }
     });
-
-    if (allSlides.length) {
-      nextSlide();
-    }
+    nextSlide();
   }
 
   rightBtn.addEventListener('click', forward);
 
   function nextSlide() {
-    fTimer = setInterval(forward, time);
+    fTimer = setTimeout(() => {
+      allSlides = document.querySelectorAll('.slide-content');
+      if (allSlides.length) {
+        forward();
+      }
+    }, time);
   }
 
   let tileList = tiles.querySelectorAll('div');
   tileList.forEach((tile) => {
     tile.addEventListener('click', () => {
-      clearInterval(fTimer);
+      clearTimeout(fTimer);
       let num = parseInt(tile.dataset.slideNumber);
       let actSlide = slideGroup.querySelector(`[data-slide-number="${num}"]`);
 

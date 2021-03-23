@@ -1,6 +1,6 @@
 // Create cart page
 
-function createCartPage(e) {
+function openCartPage(e) {
   let mod = e.target.dataset.model;
   let type = e.target.dataset.type;
   let cartCheck = false;
@@ -20,7 +20,7 @@ function createCartPage(e) {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
       }
     });
-    cartItemsUpdate();
+    createCartPage();
   }
 
   if (cartPage.classList.contains('c-hide')) {
@@ -28,7 +28,7 @@ function createCartPage(e) {
   }
 }
 
-function cartItemsUpdate() {
+function createCartPage() {
   let tempItem = '';
   cartItems.forEach((el) => {
     tempItem += `
@@ -146,7 +146,7 @@ function cartItemsUpdate() {
         }
       });
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
-      setTimeout(cartItemsUpdate, 251);
+      setTimeout(createCartPage, 251);
 
       cartSpanUpdate(tempQuantity);
     });

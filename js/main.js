@@ -8,7 +8,6 @@ const header = document.getElementById('header'),
 
 let slide = document.createElement('div');
 slide.id = 'slide';
-slide.className = 'slide-height';
 
 let form = document.createElement('form');
 form.id = 'search-form';
@@ -51,6 +50,10 @@ footerSection.className = 'grid';
 
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
+//Create slider timeout variable
+
+let fTimer;
+
 // Create data path and value variables
 
 const productPath = 'json/products.json',
@@ -72,15 +75,29 @@ document.addEventListener('DOMContentLoaded', () => {
   getData(domPath).then((data) => {
     domData = data;
     createHeader();
-    createSlider();
-    createQuickMenu();
-    createSections();
+    createHomePage();
     createFooter();
-    cartItemsUpdate();
-    createSearch();
   });
 
   getData(productPath).then((data) => {
     productData = data;
   });
+});
+
+//Add history navigation
+
+window.addEventListener('popstate', (e) => {
+  if (e.state === null) {
+    createHomePage();
+  } else {
+    if (e.state.type === 'search') {
+      document.getElementById('search-input').value = e.state.series;
+      search(e.state.series);
+    } else if (e.state.type === 'home') {
+      createHomePage();
+    } else {
+      searchHide();
+      createProductPage(e.state.type, e.state.series);
+    }
+  }
 });
