@@ -806,8 +806,8 @@ input[type='checkbox'] {
   text-align: center;
   border-radius: 50%;
   font-weight: 700;
-  left: 5px;
-  top: -5px;
+  bottom: 9px;
+  right: -5px;
   border-left: none;
   border-bottom: none;
   background-color: rgba(0, 0, 255, 0.2);
