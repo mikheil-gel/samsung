@@ -130,7 +130,7 @@ function createHeader() {
       type: 'home',
       series: 'home',
     };
-    history.pushState(pageData, '', '/');
+    history.pushState(pageData, '', '');
     createHomePage();
     e.preventDefault();
   });
@@ -198,7 +198,7 @@ function createHeader() {
           type: 'search',
           series: newValue,
         };
-        history.pushState(pageData, '', '/');
+        history.pushState(pageData, '', '');
         if (app.querySelector('#product-list')) {
           let gif = document.createElement('img');
           let timeout;
@@ -457,7 +457,7 @@ function openLinks(e) {
       type,
       series,
     };
-    history.pushState(pageData, '', '/');
+    history.pushState(pageData, '', '');
 
     createProductPage(type, series);
     if (cartPage.classList.contains('c-show')) {
