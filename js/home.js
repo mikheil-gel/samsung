@@ -241,7 +241,6 @@ function createHeader() {
 
       burgerMenu.classList.remove('c-show');
       burgerMenu.classList.add('c-hide');
-      console.log('burger do');
       document.body.classList.remove('overflow-h');
     });
   });
