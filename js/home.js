@@ -584,6 +584,9 @@ function createSlides(data, slideGroup, tiles) {
 //Create slider
 
 function createSlider() {
+  while (slide.firstChild) {
+    slide.removeChild(slide.firstChild);
+  }
   slide.className = 'slide-height';
   app.append(slide);
   let time = 5000;

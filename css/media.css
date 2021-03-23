@@ -44,7 +44,6 @@
   }
   #list-header {
     width: 100%;
-    position: static;
     justify-self: center;
   }
   #side-filter {
@@ -147,7 +146,7 @@
       background-color: rgba(255, 255, 255, 0.4);
     }
     #main-list {
-      padding: 0.5rem 0.5rem 23.11rem 0.5rem;
+      padding: 0.5rem 0.5rem 23.5rem 0.5rem;
     }
   }
 }

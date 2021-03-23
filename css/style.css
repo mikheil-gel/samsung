@@ -516,8 +516,6 @@ input[type='checkbox'] {
   grid-area: header;
   height: 4rem;
   margin-bottom: 2rem;
-  position: sticky;
-  top: 0;
   z-index: 5;
 }
 .header-filter-group {
@@ -562,7 +560,7 @@ input[type='checkbox'] {
   height: max-content;
   width: 24rem;
   position: sticky;
-  top: 6rem;
+  top: 2rem;
   z-index: 10;
   margin-right: 7rem;
 }

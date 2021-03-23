@@ -2,7 +2,9 @@
 
 function addHeaderFilter(type, searchData, defVal = 'feat', defText = 'featured') {
   app.append(mainList);
-  listHeader.innerHTML = '';
+  while (listHeader.firstChild) {
+    listHeader.removeChild(listHeader.firstChild);
+  }
 
   listHeader.innerHTML = `
       <div class="header-filter-group flex">
@@ -76,7 +78,9 @@ function headerFilterUpdate(type, searchData) {
 
 function addSideFilter(type, series, searchData) {
   mainList.append(sideFilter);
-  sideFilter.innerHTML = '';
+  while (sideFilter.firstChild) {
+    sideFilter.removeChild(sideFilter.firstChild);
+  }
   let data = domData.productFilterData;
 
   data[type].forEach((el) => {
